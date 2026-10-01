@@ -457,6 +457,18 @@
       "s": false,
       "t": "Eau de Parfum"
     },
+    "https://www.chromehearts.com/scents/22-incense-refill/151407XXXXXX00S.html": {
+      "s": false,
+      "t": "Incense Set Refill"
+    },
+    "https://www.chromehearts.com/scents/22-incense-set-with-holder/146053XXXXXX00R.html": {
+      "s": false,
+      "t": "Incense Set with Holder"
+    },
+    "https://www.chromehearts.com/scents/22-perfumed-hand-spray/208531PNKXXX751.html": {
+      "s": false,
+      "t": "Perfumed Hand Spray"
+    },
     "https://www.chromehearts.com/scents/22-roll-on-perfume/162008CRYXXX271.html": {
       "s": true,
       "t": "Roll-On Perfume"
@@ -473,6 +485,10 @@
       "s": false,
       "t": "Scented Candle Refill 200g"
     },
+    "https://www.chromehearts.com/scents/22-scented-candle-set-35g/214141D7BXXX01S.html": {
+      "s": false,
+      "t": "Scented Candle Set 35G"
+    },
     "https://www.chromehearts.com/scents/22-soap-on-a-rope/179527XXXXXX273.html": {
       "s": false,
       "t": "Soap on a Rope"
@@ -480,6 +496,18 @@
     "https://www.chromehearts.com/scents/33-eau-de-parfum/162006CRYXXX272.html": {
       "s": false,
       "t": "Eau de Parfum"
+    },
+    "https://www.chromehearts.com/scents/33-incense-refill/151407XXXXXX169.html": {
+      "s": false,
+      "t": "Incense Set Refill"
+    },
+    "https://www.chromehearts.com/scents/33-incense-set-with-holder/146053XXXXXX142.html": {
+      "s": false,
+      "t": "Incense Set with Holder"
+    },
+    "https://www.chromehearts.com/scents/33-perfumed-hand-spray/208531BLUXXX752.html": {
+      "s": false,
+      "t": "Perfumed Hand Spray"
     },
     "https://www.chromehearts.com/scents/33-roll-on-perfume/162008CRYXXX272.html": {
       "s": false,
@@ -497,9 +525,17 @@
       "s": false,
       "t": "Scented Candle Refill 200g"
     },
+    "https://www.chromehearts.com/scents/33-scented-candle-set-35g/214141D7BXXX01T.html": {
+      "s": false,
+      "t": "Scented Candle Set 35G"
+    },
     "https://www.chromehearts.com/scents/33-soap-on-a-rope/179527XXXXXX274.html": {
       "s": false,
       "t": "Soap on a Rope"
+    },
+    "https://www.chromehearts.com/scents/matchstick-holder/148310SLVXXX186.html": {
+      "s": false,
+      "t": "Matchstick Holder"
     },
     "https://www.chromehearts.com/socks": {
       "s": false,
