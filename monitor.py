@@ -1,10 +1,12 @@
-"""크롬하츠 홈페이지 + 메뉴 페이지 감시 프로그램 (2판).
+"""크롬하츠 홈페이지 + 메뉴 페이지 감시 프로그램 (3판).
 
 알려주는 것:
 1) 새 메뉴 / 새 페이지
 2) 메뉴 페이지에 새로 올라온 상품
 3) 품절이었던 상품이 다시 살아난 것 (재입고)
 4) 사라졌던 링크가 다시 나타난 것
+5) 매일 아침 9시 이후 "정상 작동 중" 알림 1번
+6) 접속 실패가 계속되면(약 30분) 오류 알림
 
 매번 "지난번에 본 그대로"와 비교하기 때문에, 사라졌다가 다시 생기면 다시 알려줍니다.
 """
@@ -15,6 +17,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 
 SITE = "https://www.chromehearts.com/"
@@ -148,16 +151,36 @@ def crawl():
     return result
 
 
-def load_previous():
+KST = timezone(timedelta(hours=9))
+FAIL_ALERT_AT = 3        # 연속 실패 3번(약 30분)이 되면 오류 알림
+FAIL_REPEAT_EVERY = 18   # 그 뒤로는 18번(약 3시간)마다 다시 알림
+
+
+def now_kst():
+    return datetime.now(KST)
+
+
+def load_state():
+    """저장해 둔 기억(페이지별 링크)과 부가 정보(meta)를 읽습니다."""
+    if not os.path.exists(STATE_FILE):
+        return {}, {}
     with open(STATE_FILE, encoding="utf-8") as f:
         raw = json.load(f)
-    prev = {}
+    meta = raw.pop("__meta__", {})
+    pages = {}
     for page, links in raw.items():
         if isinstance(links, list):  # 예전 형식 호환
-            prev[page] = {u: {"t": "", "s": False} for u in links}
+            pages[page] = {u: {"t": "", "s": False} for u in links}
         else:
-            prev[page] = links
-    return prev
+            pages[page] = links
+    return pages, meta
+
+
+def save_state(pages, meta):
+    data = dict(pages)
+    data["__meta__"] = meta
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 
 def describe(url, info):
@@ -166,28 +189,65 @@ def describe(url, info):
     return f"{name}{tag}\n  {url}"
 
 
+def count_summary(current):
+    total = sum(len(v) for v in current.values())
+    sold = sum(1 for v in current.values() for i in v.values() if i["s"])
+    return len(current), total, sold
+
+
+def safe_send(message):
+    try:
+        send_telegram(message)
+    except Exception as e:
+        print(f"텔레그램 전송 실패: {e}")
+
+
+def handle_failure(error, pages, meta):
+    fails = meta.get("fail", 0) + 1
+    meta["fail"] = fails
+    print(f"접속 실패 {fails}번째: {error}")
+    due = fails == FAIL_ALERT_AT or (
+        fails > FAIL_ALERT_AT and (fails - FAIL_ALERT_AT) % FAIL_REPEAT_EVERY == 0
+    )
+    if due:
+        safe_send(
+            f"⚠️ 크롬하츠 감시: 사이트 접속이 {fails}번 연속 실패했습니다.\n"
+            f"사이트가 막았거나 점검 중일 수 있습니다. (감시는 계속 시도합니다)\n오류: {str(error)[:200]}"
+        )
+    if not pages:
+        sys.exit(1)  # 아직 기준 기록이 없으면 실패로 표시
+    save_state(pages, meta)  # 실패 횟수 기록 (기준 기록이 있을 때만)
+
+
 def main():
+    pages, meta = load_state()
     try:
         current = crawl()
     except Exception as e:
-        print(f"접속 실패: {e}")
-        sys.exit(1)
+        handle_failure(e, pages, meta)
+        return
 
-    if not os.path.exists(STATE_FILE):
-        with open(STATE_FILE, "w", encoding="utf-8") as f:
-            json.dump(current, f, ensure_ascii=False, indent=2)
-        total = sum(len(v) for v in current.values())
-        sold = sum(1 for v in current.values() for i in v.values() if i["s"])
-        send_telegram(
+    today = now_kst().strftime("%Y-%m-%d")
+
+    # 접속이 다시 정상이 되면 알려줌
+    if meta.get("fail", 0) >= FAIL_ALERT_AT:
+        safe_send("✅ 크롬하츠 감시: 사이트 접속이 다시 정상으로 돌아왔습니다.")
+    meta.pop("fail", None)
+
+    if not pages:  # 처음 실행: 기준 목록 저장
+        n_pages, total, sold = count_summary(current)
+        meta["hb"] = today
+        save_state(current, meta)
+        safe_send(
             "✅ 크롬하츠 감시를 시작했습니다.\n"
-            f"페이지 {len(current)}개, 링크 {total}개를 기억했습니다.\n"
+            f"페이지 {n_pages}개, 링크 {total}개를 기억했습니다.\n"
             f"그중 '품절'로 읽힌 상품: {sold}개\n"
-            "(실제 사이트의 품절 상품 수와 비교해 보세요.)"
+            "(앞으로 매일 아침 9시 이후 '정상 작동 중' 알림이 옵니다.)"
         )
         print("처음 실행: 기준 목록 저장 완료")
         return
 
-    previous = load_previous()
+    previous = pages
     messages = []
     new_state = {}
 
@@ -232,10 +292,24 @@ def main():
     else:
         print("변화 없음")
 
-    if new_state != previous:
-        with open(STATE_FILE, "w", encoding="utf-8") as f:
-            json.dump(new_state, f, ensure_ascii=False, indent=2)
+    # 하루 한 번 "정상 작동 중" 알림 (아침 9시 이후 첫 실행 때)
+    now = now_kst()
+    if now.hour >= 9 and meta.get("hb") != today:
+        n_pages, total, sold = count_summary(current)
+        safe_send(
+            f"✅ 크롬하츠 감시 정상 작동 중 ({today})\n"
+            f"페이지 {n_pages}개 · 링크 {total}개 · 품절 {sold}개 확인했습니다."
+        )
+        meta["hb"] = today
+
+    save_state(new_state, meta)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit:
+        raise
+    except Exception as e:  # 예상 못한 프로그램 오류
+        safe_send(f"⚠️ 크롬하츠 감시 프로그램 오류: {str(e)[:300]}")
+        raise
