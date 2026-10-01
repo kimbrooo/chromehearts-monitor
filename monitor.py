@@ -116,6 +116,20 @@ def send_telegram(message):
     urllib.request.urlopen(url, data=data, timeout=30)
 
 
+ALERT_REPEAT = 10  # 알림을 몇 번 연속으로 보낼지 (자고 있어도 깨도록)
+
+
+def send_alert(message):
+    """중요한 알림은 여러 번 연속으로 보냅니다."""
+    for i in range(1, ALERT_REPEAT + 1):
+        try:
+            send_telegram(f"[{i}/{ALERT_REPEAT}] " + message)
+        except Exception as e:
+            print(f"{i}번째 알림 전송 실패: {e}")
+        if i < ALERT_REPEAT:
+            time.sleep(3)  # 텔레그램이 너무 빠른 전송을 막지 않도록 간격을 둠
+
+
 def crawl():
     result = {}
     home = fetch_links(SITE)
@@ -213,7 +227,7 @@ def main():
         new_state.setdefault(page, links)
 
     if messages:
-        send_telegram("크롬하츠 변화 감지!\n\n" + "\n\n".join(messages))
+        send_alert("크롬하츠 변화 감지!\n\n" + "\n\n".join(messages))
         print(f"알림 전송: {len(messages)}건")
     else:
         print("변화 없음")
