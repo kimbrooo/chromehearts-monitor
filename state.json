@@ -59,6 +59,10 @@
       "s": false,
       "t": "Socks"
     },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
+    },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
       "t": "Terms"
@@ -161,6 +165,10 @@
       "s": false,
       "t": "Socks"
     },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
+    },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
       "t": "Terms"
@@ -247,6 +255,10 @@
       "s": false,
       "t": "Socks"
     },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
+    },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
       "t": "Terms"
@@ -308,6 +320,10 @@
     "https://www.chromehearts.com/socks": {
       "s": false,
       "t": "Socks"
+    },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
     },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
@@ -394,6 +410,10 @@
     "https://www.chromehearts.com/socks": {
       "s": false,
       "t": "Socks"
+    },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
     },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
@@ -571,6 +591,10 @@
       "s": false,
       "t": "Socks"
     },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
+    },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
       "t": "Terms"
@@ -656,6 +680,80 @@
     "https://www.chromehearts.com/socks/womens-sport/191715D5DXXX408.html": {
       "s": false,
       "t": "WOMENS SPORT"
+    },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
+    },
+    "https://www.chromehearts.com/terms.html": {
+      "s": false,
+      "t": "Terms"
+    }
+  },
+  "https://www.chromehearts.com/sports-mesh": {
+    "https://www.chromehearts.com/": {
+      "s": false,
+      "t": ""
+    },
+    "https://www.chromehearts.com/baccarat": {
+      "s": false,
+      "t": "Baccarat"
+    },
+    "https://www.chromehearts.com/boxers-leggings": {
+      "s": false,
+      "t": "BOXERS & LEGGINGS"
+    },
+    "https://www.chromehearts.com/cart": {
+      "s": false,
+      "t": "Bag 0"
+    },
+    "https://www.chromehearts.com/contact": {
+      "s": false,
+      "t": "Contact"
+    },
+    "https://www.chromehearts.com/disclosure.html": {
+      "s": false,
+      "t": "CA Supply Chain Act"
+    },
+    "https://www.chromehearts.com/general.html": {
+      "s": false,
+      "t": "General"
+    },
+    "https://www.chromehearts.com/intimates": {
+      "s": false,
+      "t": "INTIMATES"
+    },
+    "https://www.chromehearts.com/locations.html": {
+      "s": false,
+      "t": "LOCATIONS"
+    },
+    "https://www.chromehearts.com/login": {
+      "s": false,
+      "t": "LOGIN"
+    },
+    "https://www.chromehearts.com/magazine.html": {
+      "s": false,
+      "t": "MAGAZINE"
+    },
+    "https://www.chromehearts.com/privacy.html": {
+      "s": false,
+      "t": "Privacy"
+    },
+    "https://www.chromehearts.com/scents": {
+      "s": false,
+      "t": "Scents"
+    },
+    "https://www.chromehearts.com/shop": {
+      "s": false,
+      "t": "Shop"
+    },
+    "https://www.chromehearts.com/socks": {
+      "s": false,
+      "t": "Socks"
+    },
+    "https://www.chromehearts.com/sports-mesh": {
+      "s": false,
+      "t": "SPORTS MESH"
     },
     "https://www.chromehearts.com/terms.html": {
       "s": false,
