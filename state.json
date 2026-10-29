@@ -524,7 +524,7 @@
       "t": "Eau de Parfum"
     },
     "https://www.chromehearts.com/scents/22-roll-on-perfume/162008CRYXXX271.html": {
-      "s": true,
+      "s": false,
       "t": "Roll-On Perfume"
     },
     "https://www.chromehearts.com/scents/22-scented-candle-100g/172571CRYXXX273.html": {
@@ -532,7 +532,7 @@
       "t": "Scented Candle 100g"
     },
     "https://www.chromehearts.com/scents/22-scented-candle-220g/162045CRYXXX273.html": {
-      "s": true,
+      "s": false,
       "t": "Scented Candle 220g"
     },
     "https://www.chromehearts.com/scents/22-scented-candle-refill-200g/175740XXXXXX273.html": {
