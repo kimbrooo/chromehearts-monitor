@@ -27,10 +27,6 @@
       "s": false,
       "t": "CA Supply Chain Act"
     },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
-    },
     "https://www.chromehearts.com/general.html": {
       "s": false,
       "t": "General"
@@ -133,10 +129,6 @@
       "s": false,
       "t": "CA Supply Chain Act"
     },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
-    },
     "https://www.chromehearts.com/general.html": {
       "s": false,
       "t": "General"
@@ -223,10 +215,6 @@
       "s": false,
       "t": "CA Supply Chain Act"
     },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
-    },
     "https://www.chromehearts.com/general.html": {
       "s": false,
       "t": "General"
@@ -288,10 +276,6 @@
     "https://www.chromehearts.com/disclosure.html": {
       "s": false,
       "t": "CA Supply Chain Act"
-    },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
     },
     "https://www.chromehearts.com/general.html": {
       "s": false,
@@ -420,10 +404,6 @@
     "https://www.chromehearts.com/disclosure.html": {
       "s": false,
       "t": "CA Supply Chain Act"
-    },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
     },
     "https://www.chromehearts.com/general.html": {
       "s": false,
@@ -647,10 +627,6 @@
       "s": false,
       "t": "CA Supply Chain Act"
     },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
-    },
     "https://www.chromehearts.com/general.html": {
       "s": false,
       "t": "General"
@@ -704,7 +680,7 @@
       "t": "Soap on a Rope"
     },
     "https://www.chromehearts.com/scents/33-eau-de-parfum/162006CRYXXX272.html": {
-      "s": false,
+      "s": true,
       "t": "Eau de Parfum"
     },
     "https://www.chromehearts.com/scents/33-roll-on-perfume/162008CRYXXX272.html": {
@@ -830,10 +806,6 @@
     "https://www.chromehearts.com/disclosure.html": {
       "s": false,
       "t": "CA Supply Chain Act"
-    },
-    "https://www.chromehearts.com/eyewear": {
-      "s": false,
-      "t": "Eyewear"
     },
     "https://www.chromehearts.com/general.html": {
       "s": false,
