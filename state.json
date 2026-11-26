@@ -1,6 +1,6 @@
 {
   "__meta__": {
-    "hb": "2026-11-25"
+    "hb": "2026-11-26"
   },
   "https://www.chromehearts.com/": {
     "https://www.chromehearts.com/": {
@@ -742,7 +742,7 @@
       "t": "Soap on a Rope"
     },
     "https://www.chromehearts.com/scents/33-eau-de-parfum/162006CRYXXX272.html": {
-      "s": true,
+      "s": false,
       "t": "Eau de Parfum"
     },
     "https://www.chromehearts.com/scents/33-roll-on-perfume/162008CRYXXX272.html": {
